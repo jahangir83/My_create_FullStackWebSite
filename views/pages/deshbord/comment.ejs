@@ -1,0 +1,73 @@
+
+
+<%- include('../../partials/head')%>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-2">
+            <%- include("../../partials/sideNav")%>
+        </div>
+
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="card card-body my-5">
+                        <h1>My Recent Comment</h1>
+  
+                            <div class="mt-5" id="comment-holder">
+                                <% if(comments.length === 0){ %>
+                                    <p class="text-center text-muted">Therer is no comment</p>
+                                <% } else{ %>
+                                    <% for(let commet of comments.reverse()) {%>
+     
+                                    <div class="media border">
+                                        <img src="<%= commet.user.profilePic %>" class="rounded-circle mx-3 jahangir" style="width:40px">
+                                        <div class="media-body my-3">
+                                            <p>On Comment  <strong><%= commet.post.title%></strong> Post By <a href="/authore/<%= commet.user._id%>"><%= commet.user.username%></a> <%= moment(commet.createAt)%></p>
+                                            <p><%= commet.body %></p>
+                                            
+                                                <button id="commentDelete" class="btn-sm btn-danger" data-comment="<%= commet._id%>">Delete</button>
+                                            <div name="replies">
+                                                <% if (commet.replies.length > 0) {%>
+                                                    <% for(let reply of commet.replies) { %>
+                                                        
+                                                        <div class="media mt-3">
+                                                            <img src="<%= reply.user.profilePic %>" class="align-self-start mr-3 rounded-circle" style="width: 40px">
+                                                            <div class="media-body">
+                                                                <p><%= reply.body%></p>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    <% } %>
+                                                <% } %>
+                                            </div>
+                                            
+                                            <div class="my-3">
+                                                <input type="text" class="form-control" placeholder="Press Enter to Reply" name="reply" data-comment="<%= commet._id%>">
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <% } %>
+                                    <% } %>
+                             </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+
+
+
+<br>
+<%- include('../../partials/footer')%>
+<script src="/public/scripts/justDeshbordComment.js"></script>
+
+
+
+</body>
+</html>

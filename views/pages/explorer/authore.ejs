@@ -1,0 +1,72 @@
+<%- include("../../partials/head")%>
+
+<div class="container my-5 ">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 card card-body">
+            <div class="d-flex ">
+                <div class="mx-3">
+                    <img src="<%= authore.profilePic%>" class="img-thumbnail img-fluid">
+                </div>
+                <div>
+                    <p>Name: <strong> <%= authore.profile.name %> </strong></p> 
+                    <p>Title: <strong> <%= authore.profile.title %> </strong></p>
+                    <p> Bio: <%= authore.profile.bio %></p>
+                    
+                    <div>
+                        <% if(authore.profile.links) {%>
+                            <span>
+                                <a href="<%= authore.profile.links.website%>" target="_blank">
+                                     <ion-icon name="globe-outline"></ion-icon>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="<%= authore.profile.links.facebook%>" target="_blank">
+                                     <ion-icon name="logo-facebook"></ion-icon>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="<%= authore.profile.links.twitter%>" target="_blank">
+                                     <ion-icon name="logo-twitter"></ion-icon>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="<%= authore.profile.links.github%>" target="_blank">
+                                     <ion-icon name="logo-github"></ion-icon>
+                                </a>
+                            </span>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+     
+                
+        </div>
+    </div>
+</div>
+<h2 class="text-center my-4" style="border-bottom: 2px solid #ddd;">Your All Post</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="row">
+                <% for( let i of authore.profile.posts) {%>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="/explorer/<%= i._id%>"> <h5 class="card-title"><%= i.title%></h5></a>
+                            <img src="<%= i.thumbnail%>" style="width: 100% !important;height: 177px !important;" alt="">
+                                                   
+                    </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<%- include("../../partials/footer")%>
+
+
+</body>
+</html>

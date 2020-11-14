@@ -1,0 +1,54 @@
+
+
+<%- include('../../partials/head')%>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-2">
+            <%- include("../../partials/sideNav")%>
+        </div>
+
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="card card-body my-5">
+                        <h1>This is bookmarks</h1>
+                        <div class="row">
+                            <% if(posts.length === 0){ %>
+                                <h5 style="margin-left: 21px;margin-top: 10px;">You have don't Bookamrks Post </h5>
+                            <% } else{ %>
+                                    <% for(let post of posts.reverse()){ %>
+                                        <div class="card col-sm-3 m-3">
+                                            <% if(post.thumbnail) {%>
+                                                <img src="<%= post.thumbnail %>" alt="<% post.title %>" class="card-img-top mt-3">
+                                            <% } %>
+                                            <div class="card-body">
+                                                <a href="/explorer/<%= post._id%>" style="color: #222;" >
+                                                <h5><%= post.title%></h5>
+                                            </a>
+                                            </div>
+                                        </div>
+                                    <% } %>
+                                <% } %>
+                        </div>    
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+
+
+
+<br>
+<%- include('../../partials/footer')%>
+
+
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+
+
+<%- include('../../../partials/head.ejs')%>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css">
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-2">
+            <%- include("../../../partials/sideNav")%>
+        </div>
+
+        <div class="col-md-10">
+            <div class="card card-body my-5 py-5 mx-5">
+                <h5 class="my-3">Create A New Post </h5>
+                <form action="/posts/create" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="title">Enter Your Post Title</label>
+                        <input type="text" id="title" value="<%= value.title  %>" class="form-control <%= error.title ? 'is-invalid' :'' %>" name="title">
+                        <div class="invalid-feedback">
+                            <%= error.title%>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tiny-mce-post-body" >Enter Your Post Body</label>
+                        <textarea name="body" value="<%= value.body %>" id="tiny-mc-post-body" class="form-control <%= error.body ? 'is-invalid' :'' %>" ></textarea>
+                        <div class="invalid-feedback">
+                            <%= error.body %>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tags">Enter Some Tags (max 10)</label>
+                        <input type="text" value="<%= value.tags %>" name="tags" id="tags" placeholder="tag1, tag2, tag3" class="form-control">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" name="post-thumbnail" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Create Post" class="btn btn-primary">
+                </form>
+            </div>
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+<br>
+<br>
+
+<%- include('../../../partials/footer')%>
+
+<script src="https://cdn.tiny.cloud/1/sexd5bka8qg6pt6udxotvn3n3pwyhoxkeghc8bq4nqpajevy/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="/public/scripts/tinymc.js"></script>
+<script>
+    $('#inputGroupFile01').on('change', function(e){
+        let filename = e.target.files[0].name
+        $(this).next('.custom-file-label').html(filename)
+    })
+</script>
+
+</body>
+</html>
