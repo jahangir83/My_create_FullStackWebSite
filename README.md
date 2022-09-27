@@ -1,6 +1,6 @@
 ### I am focus on learnig purpose create a web application 
 
-###💪 You can explore my code  but i am not create documention yet
+### You can explore my code  but i am not create documention yet
 
 you make sure your computer nodeJs install than 
 
@@ -8,7 +8,7 @@ you make sure your computer nodeJs install than
   
   2, run = npm install
   
-  3, Got to file ".env" setup yout mongodb URL 
+  3, Got to file ".env" setup your mongodb Database URL 
   
   4, npm start
   
