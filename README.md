@@ -1,6 +1,6 @@
 ### This is Facebook type web application
 
-### You can explore my code  but i am not create documention yet
+### You can explore my some of code  
 
 you make sure your computer nodeJs install than 
 
