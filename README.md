@@ -1,4 +1,4 @@
-### I am focus on learnig purpose create a web application 
+### This is Facebook type web application
 
 ### You can explore my code  but i am not create documention yet
 
